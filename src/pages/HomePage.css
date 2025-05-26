@@ -1,0 +1,279 @@
+.homepage {
+  width: 100%;
+  padding: 2rem 1rem;
+  overflow-x: hidden;
+}
+
+/* Bloc 1 - Hero Section */
+.block1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.text-container {
+  flex: 1;
+  padding-right: 2rem;
+}
+
+.title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  line-height: 1.2;
+}
+
+.description {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  margin-bottom: 2rem;
+}
+  
+  .find-flight-btn {
+    padding: 12px 24px;
+    background-color: #1c1d1f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .find-flight-btn:hover {
+    background-color: #26282b;
+  }
+  
+  /* Conteneur à droite (image) */
+  .image-container {
+    flex: 1;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: auto;
+    max-width: 600px; /* Limite la largeur maximale de l'image */
+    border-radius: 8px;
+  }
+
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 20px;
+}
+
+/* Section des destinations populaires */
+.popular-destinations {
+  margin: 40px 0;
+  text-align: center;
+  position: relative;
+}
+
+.destination-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.destination-scroll {
+  display: flex;
+  overflow-x: scroll;
+  gap: 20px;
+  padding: 10px 0;
+  /* Ajouter ces propriétés pour masquer la barre de défilement */
+  scrollbar-width: none; /* Pour Firefox */
+  -ms-overflow-style: none; /* Pour Internet Explorer et Edge */
+}
+
+.destination-card {
+  width: 250px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+}
+
+.destination-card:hover {
+  transform: translateY(-5px);
+}
+
+.destination-image {
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
+}
+
+.destination-info {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.destination-city {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.destination-country {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.scroll-btn.left {
+  left: -20px; /* Déplace la flèche gauche vers le coin gauche */
+}
+
+.scroll-btn.right {
+  right: -20px; /* Déplace la flèche droite vers le coin droit */
+}
+
+.scroll-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Section des services */
+.services {
+    padding: 2rem 1rem;
+  }
+  
+  .services-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  .services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .service-item {
+    flex: 1 1 calc(33.33% - 2rem);
+    max-width: calc(33.33% - 2rem);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+  
+.service-icon {
+    font-size: 2rem;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+}
+
+  /* Responsive : Réduit légèrement les icônes pour les petits écrans */
+  @media (max-width: 768px) {
+    .block1 {
+      flex-direction: column;
+      text-align: center;
+      gap: 3rem;
+    }
+  
+    .text-container {
+      padding-right: 0;
+    }
+  
+    .hero-image {
+      max-width: 100%;
+    }
+  
+    .find-flight-btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .service-item {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .scroll-btn {
+      display: none; /* Cache les boutons de défilement */
+    }
+  
+    .destination-scroll {
+      padding: 10px;
+      -webkit-overflow-scrolling: touch; /* Améliore le défilement tactile sur iOS */
+      scroll-snap-type: x mandatory; /* Ajoute un snap au défilement */
+    }
+  
+    .destination-card {
+      scroll-snap-align: center; /* Aligne les cartes lors du défilement */
+    }
+  }
+  
+  .service-info {
+    flex: 1;
+  }
+  
+  .service-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .service-description {
+    font-size: 0.95rem;
+    color: #666;
+  }
+  
+  /* Gérer la dernière rangée (2 items seulement) */
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .service-icon {
+      font-size: 2.5rem;
+    }
+  }
+  

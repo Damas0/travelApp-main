@@ -1,0 +1,98 @@
+.login-container,
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background: url("/images/travel-bg.jpg") no-repeat center center/cover;
+}
+
+.login-box,
+.signup-box {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 350px;
+}
+
+.logo {
+  font-size: 50px;
+  color: #007bff;
+}
+
+.login-title,
+.signup-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.login-form input,
+.signup-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.login-button,
+.signup-button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.login-button:hover,
+.signup-button:hover {
+  background-color: #0056b3;
+}
+
+.google-login-btn,
+.google-signup-btn {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #db4437;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.google-login-btn:hover,
+.google-signup-btn:hover {
+  background-color: #b23121;
+}
+
+.google-icon {
+  margin-right: 10px;
+}
+
+.signup-link,
+.login-link {
+  margin-top: 10px;
+}
+
+.signup-link a,
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signup-link a:hover,
+.login-link a:hover {
+  text-decoration: underline;
+}

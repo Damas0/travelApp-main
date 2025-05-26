@@ -1,0 +1,259 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+}
+
+.page-header h1 {
+  margin: 0;
+}
+
+.create-button {
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.create-button:hover {
+  background: #0056b3;
+}
+
+.voyages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 2rem;
+}
+
+.voyage-card {
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  gap: 2rem;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.voyage-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.voyage-details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  min-height: 300px;
+}
+
+.voyage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.voyage-details h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  color: #1a1a1a;
+}
+
+.voyage-details p {
+  margin: 0.25rem 0;
+  color: #666;
+}
+
+.voyage-content {
+  flex: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.voyage-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.item-types {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.type-icon {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+.type-icon.active {
+  color: #1a1a1a;
+}
+
+.type-icon:hover {
+  transform: translateY(-2px);
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.edit-button,
+.delete-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.edit-button {
+  color: #3b82f6;
+}
+
+.delete-button {
+  color: #ef4444;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.edit-button:hover {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.delete-button:hover {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.form-voyage {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-voyage input {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-voyage input[type="file"] {
+  padding: 0.5rem;
+  border: 2px dashed #e2e8f0;
+  background: #f8fafc;
+}
+
+.image-preview {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+.submit-button {
+  background: #2563eb;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-button:hover {
+  background: #1d4ed8;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .voyage-card {
+    grid-template-columns: 1fr;
+  }
+  
+  .voyage-image {
+    height: 200px;
+  }
+}
