@@ -51,4 +51,4 @@ Projet réalisé dans le cadre d’un cours scolaire en **mai 2025**, puis dépl
 ![Favoris](./screenshots/add-to-list.png)
 
 ### 📄 Résumé du voyage
-![Résumé](./screenshots/summary.png
+![Résumé](./screenshots/summary.png)
