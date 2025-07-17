@@ -35,10 +35,20 @@ Projet réalisé dans le cadre d’un cours scolaire en **mai 2025**, puis dépl
 
 ## 📸 Aperçu de l'application
 
-| Accueil | Vols | Hôtels |
-|--------|------|--------|
-| ![Accueil](./screenshots/home.png) | ![Vols](./screenshots/flights.png) | ![Hôtels](./screenshots/hotels.png) |
+### 🏠 Accueil
+![Accueil](./screenshots/home.png)
 
-| Voitures | Liste de favoris | Résumé |
-|----------|------------------|--------|
-| ![Voitures](./screenshots/cars.png) | ![Ajout](./screenshots/add-to-list.png) | ![Résumé](./screenshots/summary.png) |
+### ✈️ Recherche de vols
+![Vols](./screenshots/flights.png)
+
+### 🏨 Recherche d’hôtels
+![Hôtels](./screenshots/hotels.png)
+
+### 🚗 Location de voitures
+![Voitures](./screenshots/cars.png)
+
+### ⭐ Liste de favoris
+![Favoris](./screenshots/add-to-list.png)
+
+### 📄 Résumé du voyage
+![Résumé](./screenshots/summary.png
