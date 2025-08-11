@@ -77,7 +77,6 @@ function HotelsPage() {
   // Ajouter ces états au début du composant HotelsPage
   const [searchTerm, setSearchTerm] = useState('');
   const [airports, setAirports] = useState([]);
-  const [selectedAirport, setSelectedAirport] = useState(null);
   
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
 
@@ -135,7 +134,6 @@ const searchAirports = async (query) => {
 
 // Gérer la sélection d'un aéroport
 const handleAirportSelect = (airport) => {
-  setSelectedAirport(airport);
   setSearchTerm(airport.name);
   setCityCode(airport.iata_code);
   setAirports([]);

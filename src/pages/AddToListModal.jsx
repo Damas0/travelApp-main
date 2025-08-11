@@ -1,8 +1,7 @@
 // AddToListModal.jsx
 import { useState, useEffect } from "react";
-import { collection, query, where, getDocs, updateDoc, doc, arrayUnion } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-import { db, auth } from "../firebaseConfig";
+import { auth } from "../firebaseConfig";
 import PropTypes from 'prop-types';
 import "./AddToListModal.css";
 
@@ -19,13 +18,12 @@ const AddToListModal = ({ item, onClose }) => {
     return () => unsubscribe();
   }, []);
 
-  // Récupérer les listes de l'utilisateur depuis Firestore
+  // Récupérer les listes de l'utilisateur depuis le serveur
   useEffect(() => {
     const fetchLists = async () => {
       if (!currentUser) return;
-      const q = query(collection(db, "voyages"), where("userId", "==", currentUser.uid));
-      const querySnapshot = await getDocs(q);
-      const lists = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const res = await fetch(`/api/voyages?userId=${currentUser.uid}`);
+      const lists = await res.json();
       setUserLists(lists);
       setLoading(false);
     };
@@ -37,10 +35,12 @@ const AddToListModal = ({ item, onClose }) => {
 
   const handleSelectList = async (listId) => {
     try {
-      const listRef = doc(db, "voyages", listId);
-      await updateDoc(listRef, {
-        items: arrayUnion(item)
+      const res = await fetch(`/api/voyages/${listId}/items`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(item),
       });
+      if (!res.ok) throw new Error("Erreur serveur");
       alert("L'élément a été ajouté à votre liste !");
       onClose();
     } catch (error) {

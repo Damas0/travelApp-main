@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { db } from "../firebaseConfig";
-import { doc, getDoc } from "firebase/firestore";
 import "./VoyageDetail.css";
 import { FaPlane, FaHotel, FaCar, FaArrowLeft, FaCalendar, FaMapMarkerAlt, FaClock, FaMoneyBillWave,FaUsers, FaRoad } from 'react-icons/fa';
 
@@ -14,10 +12,10 @@ function VoyageDetail() {
     const fetchVoyage = async () => {
       setLoading(true);
       try {
-        const docRef = doc(db, "voyages", id);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setVoyage({ id: docSnap.id, ...docSnap.data() });
+        const res = await fetch(`/api/voyages/${id}`);
+        if (res.ok) {
+          const data = await res.json();
+          setVoyage(data);
         } else {
           console.log("Voyage inexistant !");
         }

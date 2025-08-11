@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
-import { auth, db, storage } from "../firebaseConfig"; 
+import { auth } from "../firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { 
-  collection, getDocs, query, where, addDoc, deleteDoc, doc 
-} from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import "./ListeVoyage.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPen,faPlane, faHotel, faCar  } from '@fortawesome/free-solid-svg-icons';
@@ -38,11 +34,9 @@ const ListeVoyage = () => {
   const fetchVoyages = async () => {
     if (!user) return;
     try {
-      const voyagesCollection = collection(db, "voyages");
-      const q = query(voyagesCollection, where("userId", "==", user.uid));
-      const querySnapshot = await getDocs(q);
-      const voyagesList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setVoyages(voyagesList);
+      const res = await fetch(`/api/voyages?userId=${user.uid}`);
+      const data = await res.json();
+      setVoyages(data);
     } catch (error) {
       console.error("Erreur lors de la récupération des voyages: ", error);
     }
@@ -62,22 +56,24 @@ const ListeVoyage = () => {
       return;
     }
     try {
-      const imageRef = ref(storage, `voyages/${user.uid}/${formData.image.name}`);
-      const snapshot = await uploadBytes(imageRef, formData.image);
-      const imageUrl = await getDownloadURL(snapshot.ref);
+      const form = new FormData();
+      form.append("userId", user.uid);
+      form.append("titre", formData.titre);
+      form.append("destination", formData.destination);
+      form.append("dateDepart", formData.dateDepart);
+      form.append("dateRetour", formData.dateRetour);
+      form.append("image", formData.image);
 
-      await addDoc(collection(db, "voyages"), {
-        userId: user.uid,
-        titre: formData.titre,
-        destination: formData.destination,
-        dateDepart: formData.dateDepart,
-        dateRetour: formData.dateRetour,
-        imageUrl,
-        items: []
+      const res = await fetch("/api/voyages", {
+        method: "POST",
+        body: form,
       });
+
+      if (!res.ok) throw new Error("Erreur serveur");
 
       alert("Voyage créé avec succès !");
       setFormData({ titre: '', destination: '', dateDepart: '', dateRetour: '', image: null });
+      setImagePreview(null);
       setShowForm(false);
       fetchVoyages();
     } catch (error) {
@@ -90,7 +86,8 @@ const ListeVoyage = () => {
   const handleDelete = async (voyageId) => {
     if (window.confirm("Voulez-vous vraiment supprimer ce voyage ?")) {
       try {
-        await deleteDoc(doc(db, "voyages", voyageId));
+        const res = await fetch(`/api/voyages/${voyageId}`, { method: "DELETE" });
+        if (!res.ok) throw new Error("Erreur serveur");
         setVoyages(voyages.filter(v => v.id !== voyageId));
       } catch (error) {
         console.error("Erreur lors de la suppression:", error);
