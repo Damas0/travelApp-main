@@ -1,7 +1,6 @@
 # 🌍 Travel Booking App
 
 **Travel Booking App** est une application de réservation de voyages tout-en-un permettant aux utilisateurs de réserver des **vols**, **hôtels** et **voitures**, avec une interface moderne et responsive.  
-Projet réalisé dans le cadre d’un cours scolaire en **mai 2025**, puis déployé pour présentation dans le portfolio.
 
 ---
 
